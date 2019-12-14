@@ -1,0 +1,54 @@
+# import flask dependencies
+from flask import Flask, request, make_response, jsonify
+
+# initialize the flask app
+app = Flask(__name__)
+
+# default route
+@app.route('/')
+def index():
+    return 'Hello World!'
+
+# function for responses
+def results():
+    # build a request object
+    req = request.get_json(force=True)
+
+    # fetch action from json
+    action = req.get('queryResult').get('action')
+
+    # return a fulfillment response
+    return {'fulfillmentText': 'This is a response from webhook.'}
+
+# create a route for webhook
+@app.route('/webhook', methods=['GET', 'POST'])
+def webhook():
+    # return response
+    return make_response(jsonify(results()))
+
+
+# run the app
+if __name__ == '__main__':
+   app.run(host='0.0.0.0', port=5000)
+
+
+
+FROM python:3-slim
+COPY . /app
+WORKDIR /app
+RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["teste.py"]
+
+
+#docker run -p 5000:5000 test 
+
+
+Click==7.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+Werkzeug==0.15.5
+
+https://www.codementor.io/@mamytianarakotomalala/how-to-deploy-docker-container-with-ansible-on-debian-8-mavm48kw0

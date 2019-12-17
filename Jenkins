@@ -1,0 +1,137 @@
+1  apt-get updata
+    2  apt-get update
+    3  sudo aprt-get update
+    4  sudo apt-get update
+    5  sudo apt-get remove docker docker-engine docker.io
+    6  sudo apt install docker.io
+    7  sudo systemctl start docker
+    8  sudo systemctl enable docker
+    9  sudo systemctl enable docker
+   10  sudo apt install python-pip
+   11  pip install boto boto3 ansible
+   12  ansible-playbook
+   13  pip install boto3
+   14  pip install ansible
+   15  ansible-playbook
+   16  sudo apt install ansible
+   17  ansible-playbook
+   18  vi
+   19  vi playbook.yml
+   20  ansible-playbook playbook.yml
+   21  pip install 'docker-py'
+   22  ansible-playbook playbook.yml
+   23  sudo ansible-playbook playbook.yml
+   24  history
+   25  DOCKER_HOST=tcp://localhost:4243 ./docker.py --pretty
+   26  docker images
+   27  sudo docker images
+   28  ls
+   29  pip install 'docker-compose'
+   30  DOCKER_HOST=tcp://localhost:4243 ./docker.py --pretty
+   31  ls
+   32  cp playbook.yml playbook1.yml 
+   33  vi playbook1.yml 
+   34  sudo ansible-playbook playbook1.yml
+   35  vi playbook1.yml 
+   36  sudo ansible-playbook playbook1.yml
+   37  vi playbook1.yml 
+   38  sudo ansible-playbook playbook1.yml
+   39  vi playbook1.yml 
+   40  vi docker.py
+   41  DOCKER_HOST=tcp://localhost:4243 ./docker.py --pretty
+   42  sudo DOCKER_HOST=tcp://localhost:4243 ./docker.py --pretty
+   43  ls
+   44  sudo chmod 777 docker.py 
+   45  sudo DOCKER_HOST=tcp://localhost:4243 ./docker.py --pretty
+   46  ansible-playbook -i ~/projects/ansible/contrib/inventory/docker.py playbook1.yml
+   47  rm docker.py
+   48  vi docker_inventory.py
+   49  sudo DOCKER_HOST=tcp://localhost:4243 ./docker_inventory.py --pretty
+   50  ls
+   51  sudo chmod 777 docker_inventory.py
+   52  sudo DOCKER_HOST=tcp://localhost:4243 ./docker_inventory.py --pretty
+   53  sudo DOCKER_HOST=tcp://localhost:4243 ./docker_inventory.py
+   54  sudo DOCKER_HOST=tcp://localhost:4243 ./docker_inventory.py --list
+   55  sudo DOCKER_HOST=tcp://localhost:4243 ./docker_inventory.py --host demo
+56  history
+
+
+
+
+
+# import flask dependencies
+from flask import Flask, request, make_response, jsonify
+
+# initialize the flask app
+app = Flask(__name__)
+
+# default route
+@app.route('/')
+def index():
+    return 'Hello World!'
+
+# function for responses
+def results():
+    # build a request object
+    req = request.get_json(force=True)
+
+    # fetch action from json
+    action = req.get('queryResult').get('action')
+
+    # return a fulfillment response
+    return {'fulfillmentText': 'This is a response from webhook.'}
+
+# create a route for webhook
+@app.route('/webhook', methods=['GET', 'POST'])
+def webhook():
+    # return response
+    return make_response(jsonify(results()))
+
+
+
+FROM python:3-slim
+COPY . /app
+WORKDIR /app
+RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["teste.py"]
+
+
+#docker run -p 5000:5000 test 
+
+
+Click==7.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+Werkzeug==0.15.5
+
+
+# run the app
+if __name__ == '__main__':
+   app.run(host='0.0.0.0', port=5000)
+
+
+https://docs.ansible.com/ansible/2.5/modules/docker_container_module.html
+---------------
+Today
+
+sudo yum update –y
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+sudo yum install jenkins -y
+sudo yum remove java-1.7.0-openjdk
+sudo yum install java-1.8.0
+sudo service jenkins start
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+
+
+
+
+
+
+https://gitlab.com/cristianoub/pythonforall.git
